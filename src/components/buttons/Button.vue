@@ -1,6 +1,10 @@
 <template>
   <button type="button" :class="buttonClass">
-    <slot></slot>
+    <slot>
+      <span v-if="startIcon || endIcon" :class="iconStyleClass">{{
+        icon
+      }}</span>
+    </slot>
   </button>
 </template>
 
@@ -24,13 +28,17 @@ export default {
       type: Boolean,
       default: false,
     },
-    startIcon: {
+    icon: {
       type: String,
-      default: null,
+      default: "home",
+    },
+    startIcon: {
+      type: Boolean,
+      default: false,
     },
     endIcon: {
-      type: String,
-      default: null,
+      type: Boolean,
+      default: false,
     },
     size: {
       type: String,
@@ -47,12 +55,24 @@ export default {
         "p-button",
         {
           "p-default":
-            ~this.outline && ~this.onlyText && this.color == "default",
+            !this.outline &&
+            !this.onlyText &&
+            this.color == "default" &&
+            !this.disabled,
           "p-button-sm": this.size === "sm",
           "p-button-outlined": this.outline,
-          "p-shadow": this.disableShadow,
+          "p-shadow": !this.disableShadow,
           "p-border": this.onlyText,
+          "p-disable": this.disabled,
+          "p-default:before": this.startIcon,
         },
+      ];
+    },
+    iconStyleClass() {
+      return [
+        "material-icons",
+        "p-button-icon",
+        { "p-button-start": this.startIcon, "p-button-end": this.endIcon },
       ];
     },
   },
@@ -78,11 +98,10 @@ export default {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  box-shadow: 0px 2px 3px rgba(51, 51, 51, 0.2);
 }
 
 .p-shadow {
-  box-shadow: none;
+  box-shadow: 0px 2px 3px rgba(51, 51, 51, 0.2);
 }
 
 .p-default {
@@ -94,11 +113,35 @@ export default {
   box-shadow: none;
 }
 
+.p-disable {
+  background-color: #aeaeae;
+  color: #666666;
+  cursor: default;
+  box-shadow: none;
+}
+
+.p-button-icon {
+  width: 14px;
+}
+
+.p-button-start {
+  order: 1;
+}
+
+.p-button-end {
+  order: 3;
+}
+
 .p-default:hover {
   background-color: #aeaeae;
 }
 
 .p-border:hover {
+  background-color: #aeaeae;
+  box-shadow: none;
+}
+
+.p-disable:hover {
   background-color: #aeaeae;
   box-shadow: none;
 }
@@ -111,10 +154,6 @@ export default {
 
 .p-button-outlined:hover {
   background-color: rgba(41, 98, 255, 0.1);
-}
-
-.p- .p-button:disabled {
-  cursor: default;
 }
 
 .p-button-icon-right {

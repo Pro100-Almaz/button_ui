@@ -18,6 +18,16 @@
       <p class="text-primary">{{ '<Button disableShadow />' }}</p>
       <Button :disable-shadow="true"> Default </Button>
     </div>
+    <div>
+      <p class="text-primary">{{ '<Button disabled />' }}</p>
+      <Button :disabled="true"> Default </Button>
+    </div>
+    <div>
+      <p class="text-primary">
+        {{ '<Button startIcon="”local_grocery_store”" />' }}
+      </p>
+      <Button :icon="home" :start-icon="true"> Default </Button>
+    </div>
   </div>
 </template>
 
