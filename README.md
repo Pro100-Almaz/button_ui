@@ -37,7 +37,7 @@
 
 ## Overview
 
-![screenshot](Screenshot (45).png)
+!(Screenshot (45).png)
 
 Interesting project to implement components on VUE.js
 
