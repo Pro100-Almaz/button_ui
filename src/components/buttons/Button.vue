@@ -187,7 +187,7 @@ export default {
   background-color: var(--button-danger);
 }
 
-.p-color-danger2 {
+.p-color-danger:hover {
   background-color: var(--button-danger-2);
 }
 
