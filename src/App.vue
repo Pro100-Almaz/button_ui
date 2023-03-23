@@ -21,14 +21,6 @@ import SideBar from "./components/SideBar.vue";
   --dark-alt: #334155;
   --light: #f1f5f9;
   --background-secondary: #d1d5d8;
-
-  --button-primary: #2962ff;
-  --button-primary-2: #0039cb;
-  --button-secondary: #455a64;
-  --button-secondary-2: #1c313a;
-  --button-danger: #d32f2f;
-  --button-danger-2: #9a0007;
-
   --sidebar-width: 300px;
 }
 * {
