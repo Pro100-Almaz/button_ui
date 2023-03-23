@@ -22,17 +22,64 @@
       <p class="text-primary">{{ '<Button disabled />' }}</p>
       <Button :disabled="true"> Default </Button>
     </div>
-    <div>
-      <p class="text-primary">
-        {{ '<Button startIcon="”local_grocery_store”" />' }}
-      </p>
-      <Button :icon="home" :start-icon="true"> Default </Button>
+    <div class="button-list">
+      <div>
+        <p class="text-primary">
+          {{ '<Button startIcon="”local_grocery_store”" />' }}
+        </p>
+        <Button :icon="iconValue" start-icon :label="text"></Button>
+      </div>
+      <div>
+        <p class="text-primary">
+          {{ '<Button startIcon="”local_grocery_store”" />' }}
+        </p>
+        <Button :icon="iconValue" end-icon :label="text"></Button>
+      </div>
+    </div>
+    <div class="button-list">
+      <div>
+        <p class="text-primary">{{ '<Button size="”sm”" />' }}</p>
+        <Button :size="buttomSize1"> Default </Button>
+      </div>
+      <div>
+        <p class="text-primary">{{ '<Button size="”md”" />' }}</p>
+        <Button :size="buttomSize2"> Default </Button>
+      </div>
+      <div>
+        <p class="text-primary">{{ '<Button size="”lg”" />' }}</p>
+        <Button :size="buttomSize3"> Default </Button>
+      </div>
+    </div>
+    <div class="button-list">
+      <div>
+        <p class="text-primary">{{ '<Button color="”default”" />' }}</p>
+        <Button> Default </Button>
+      </div>
+      <div>
+        <p class="text-primary">{{ '<Button color="”primary”" />' }}</p>
+        <Button :color="primaryColor[0]"> Default </Button>
+      </div>
+      <div>
+        <p class="text-primary">{{ '<Button color="”secondary”" />' }}</p>
+        <Button :color="primaryColor[1]"> Default </Button>
+      </div>
+      <div>
+        <p class="text-primary">{{ '<Button color="”danger”" />' }}</p>
+        <Button :color="primaryColor[2]"> Default </Button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Button from "./buttons/Button.vue";
+
+const iconValue = "home";
+const text = "default";
+const buttomSize1 = "sm";
+const buttomSize2 = "md";
+const buttomSize3 = "lg";
+const primaryColor = ["primary", "secondary", "danger"];
 </script>
 
 <style scoped>
@@ -68,5 +115,11 @@ h2 {
   line-height: 12px;
   margin-bottom: 12px;
   color: #828282;
+}
+
+.button-list {
+  display: flex;
+  flex-direction: row;
+  gap: 84px;
 }
 </style>
